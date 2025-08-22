@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bone Health — Flexibility and Balance Exercise Tabs</title>
+<style>
+  :root{
+    --navy:#1f2a52;
+    --pink:#e72582;
+    --aqua:#00bec7;
+    --panel:#ffffff;
+    --muted:#64748b;
+    --bg:#f6f7fb;
+    --bord:#e2e8f0;
+    --shadow:0 16px 32px rgba(16,24,40,.12);
+  }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:#0f172a;
+    font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+  }
+  .wrap{max-width:680px;margin:0 auto;padding:20px;}
+  .card{background:var(--panel);border:1px solid var(--bord);border-radius:20px;box-shadow:var(--shadow);overflow:hidden;}
+  .sub{margin:16px 18px;color:var(--muted);font-size:.95rem;}
+  .tabs{display:flex;gap:14px;padding:12px 18px 2px;flex-wrap:wrap;}
+  .tab-btn{
+    min-width:150px;
+    padding:14px 24px;
+    border-radius:45px;
+    border:2px solid var(--bord);
+    background:var(--aqua);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    font-weight:700;
+    font-size:1rem;
+    transition:.2s;
+    box-shadow:0 4px 10px rgba(2,8,23,.06);
+  }
+  .tab-btn[aria-selected="true"]{background:var(--pink);color:#fff;}
+  .panel{display:none;padding:12px 18px 22px;border-top:1px dashed var(--bord);}
+  .panel.active{display:block;}
+  .video-ph{background:linear-gradient(135deg,#f4f7fb,#eaf5fb);border:2px dashed #c9d6e3;border-radius:16px;min-height:180px;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <p class="sub">Select the tab to view each activity.</p>
+
+      <div class="tabs" role="tablist">
+        <button class="tab-btn" role="tab" aria-selected="true" aria-controls="panel-toe" id="tab-toe">Heel-to-Toe Walk</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-tree" id="tab-tree">Tree Pose</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-stretch" id="tab-stretch">Seated Hamstring Stretch</button>
+      </div>
+
+      <section id="panel-toe" class="panel active" role="tabpanel" aria-labelledby="tab-toe">
+        <h2>Heel-to-Toe Walk</h2>
+        <p><strong>What it is:</strong> A balance exercise that strengthens legs and improves coordination.</p>
+        <p><strong>How to do it:</strong> Walk in a straight line, placing the heel of one foot directly in front of the toes of the other. Use a wall or rail for light support if needed. Aim for 10–15 steps each way.</p>
+        <div class="video-ph">Video Placeholder</div>
+      </section>
+
+      <section id="panel-tree" class="panel" role="tabpanel" aria-labelledby="tab-tree">
+        <h2>Tree Pose</h2>
+        <p><strong>What it is:</strong> A gentle yoga posture that builds balance and strengthens the legs.</p>
+        <p><strong>How to do it:</strong> Stand tall, place one foot on the inside of the opposite calf or thigh (avoid the knee), and bring hands together at chest or overhead. Hold for 10–20 seconds per side.</p>
+        <div class="video-ph">Video Placeholder</div>
+      </section>
+
+      <section id="panel-stretch" class="panel" role="tabpanel" aria-labelledby="tab-stretch">
+        <h2>Seated Hamstring Stretch</h2>
+        <p><strong>What it is:</strong> A flexibility exercise to lengthen the back of the legs and improve mobility.</p>
+        <p><strong>How to do it:</strong> Sit on the edge of a sturdy chair with one leg extended forward, heel on the floor. Keep back straight and lean forward gently at the hips until you feel a stretch. Hold for 15–20 seconds each side.</p>
+        <div class="video-ph">Video Placeholder</div>
+      </section>
+    </div>
+  </div>
+
+<script>
+  const tabs = document.querySelectorAll('[role="tab"]');
+  const panels = document.querySelectorAll('[role="tabpanel"]');
+
+  tabs.forEach((tab,i)=>{
+    tab.addEventListener('click',()=>{
+      tabs.forEach(t=>t.setAttribute('aria-selected','false'));
+      panels.forEach(p=>p.classList.remove('active'));
+      tab.setAttribute('aria-selected','true');
+      document.getElementById(tab.getAttribute('aria-controls')).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
